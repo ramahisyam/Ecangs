@@ -1,11 +1,14 @@
 package com.example.ecangs.ui.auth
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import com.example.ecangs.R
+import com.example.ecangs.ui.MainActivity
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,6 +24,7 @@ class SignInFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    lateinit var btnSignIn : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,8 +38,14 @@ class SignInFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val view = inflater.inflate(R.layout.fragment_sign_in, container, false)
+        btnSignIn = view.findViewById(R.id.button_sign_in)
+        btnSignIn.setOnClickListener {
+            val intent = Intent(activity, MainActivity::class.java)
+            activity?.startActivity(intent)
+        }
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sign_in, container, false)
+        return view
     }
 
     companion object {
